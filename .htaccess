@@ -1,0 +1,14 @@
+# prevent directory listings
+Options -Indexes
+IndexIgnore */*
+ 
+# follow symbolic links
+Options FollowSymlinks
+RewriteEngine on
+# for backend web
+RewriteRule ^administration(.*)?$ backend/web/$1 [L,PT]
+#for uploads file location
+RewriteRule ^uploads/(.*)?$ uploads/$1 [L,PT]
+
+# for frontend web
+RewriteRule ^(.*)?$ frontend/web/$1
