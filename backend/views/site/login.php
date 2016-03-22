@@ -8,28 +8,27 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
-$this->params['breadcrumbs'][] = $this->title;
+$this->params['breadcrumbs'][]=[
+            'label' => 'Post Category',
+        ];
 ?>
-<div class="site-login">
-    <h1><?= Html::encode($this->title) ?></h1>
+<?php $form = ActiveForm::begin(['id' => 'login-form', 'class'=>'form-validate']); ?>
 
-    <p>Please fill out the following fields to login:</p>
+<?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-    <div class="row">
-        <div class="col-lg-5">
-            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
+<?= $form->field($model, 'password')->passwordInput() ?>
 
-                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+<div class="submit">
+	<div class="remember">
+		<input type="checkbox" name="LoginForm[rememberMe]" class='icheck-me' data-skin="square" data-color="blue" id="loginform-rememberme">
+		<label for="loginform-rememberme">Remember Me</label>
+	</div>
+	<?= Html::submitButton('Sign me in', ['class' => 'btn btn-primary', 'name' => 'login-button', 'style'=>'float:right;']) ?>
+</div>
 
-                <?= $form->field($model, 'password')->passwordInput() ?>
-
-                <?= $form->field($model, 'rememberMe')->checkbox() ?>
-
-                <div class="form-group">
-                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
-                </div>
-
-            <?php ActiveForm::end(); ?>
-        </div>
-    </div>
+<?php ActiveForm::end(); ?>
+<div class="forget">
+	<a href="#">
+		<span>Forgot password?</span>
+	</a>
 </div>

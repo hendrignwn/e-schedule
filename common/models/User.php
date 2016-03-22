@@ -4,7 +4,7 @@ namespace common\models;
 use Yii;
 use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
-use yii\db\ActiveRecord;
+use \common\components\MyActiveRecord;
 use yii\web\IdentityInterface;
 
 /**
@@ -17,13 +17,16 @@ use yii\web\IdentityInterface;
  * @property string $email
  * @property string $auth_key
  * @property integer $status
- * @property integer $created_at
- * @property integer $updated_at
+ * @property datetime $created_at
+ * @property integer $created_by
+ * @property datetime $updated_at
+ * @property integer $updated_by
  * @property string $password write-only password
  */
-class User extends ActiveRecord implements IdentityInterface
+class User extends MyActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
+    const STATUS_ACTIVATION = 5;
     const STATUS_ACTIVE = 10;
 
     /**
@@ -37,21 +40,12 @@ class User extends ActiveRecord implements IdentityInterface
     /**
      * @inheritdoc
      */
-    public function behaviors()
-    {
-        return [
-            TimestampBehavior::className(),
-        ];
-    }
-
-    /**
-     * @inheritdoc
-     */
     public function rules()
     {
         return [
+			[['username', 'email', 'password_hash'], 'required'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
-            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_DELETED]],
+            ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_ACTIVATION, self::STATUS_DELETED]],
         ];
     }
 
@@ -185,4 +179,16 @@ class User extends ActiveRecord implements IdentityInterface
     {
         $this->password_reset_token = null;
     }
+	
+	public static function statusLabels() {
+		return [
+			self::STATUS_ACTIVE => 'STATUS ACTIVE',
+			self::STATUS_ACTIVATION => 'STATUS ACTIVATION',
+			self::STATUS_DELETED => 'STATUS DELETED',
+		];
+	}
+	
+	public function statusLabel() {
+		return $this->statusLabels()[$this->status];
+	}
 }

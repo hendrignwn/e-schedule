@@ -1,0 +1,96 @@
+/*@media print {*/
+	@page {
+		//size: 10.7cm 16.5cm;
+		margin: 0.4cm 0.2cm;
+	}
+	.print {
+		padding: 5pt;
+		font-size: 0.9rem;
+		cursor: pointer;
+	}
+	
+	body{width: 11cm;}
+	
+	.wrapp {
+		padding: 0.2cm 0.5cm 0cm 0.0cm;
+		font-family: Arial;
+	}
+	.w-80 {width: 80%;}
+	.m-8 {margin-left: -8pt;width:99%}
+	/*
+	 * Header
+	 */
+	.header, .content, .footer {
+		padding-left: 0.4rem;
+		padding-right: 0.4rem;
+		overflow: hidden;
+	}
+		.header .header-title {
+			float: left;
+			width: 62%;
+		}
+			.header .header-title h3 {
+				margin:0;
+				font-weight:normal;
+				font-size: 20pt;
+				letter-spacing:6pt;
+			}
+			.header .header-title p {
+				font-size: 6pt;
+				margin:0;
+			}
+		.header .header-nota {
+			float: right;
+			margin-top: 0.5rem;
+			text-align: right;
+			width: 38%;
+			font-size: 9pt;
+			letter-spacing:4pt;
+		}
+
+	/*
+	 * Content
+	 */
+	table {width:100%;font-size: 8pt;line-height:7pt;letter-spacing:4pt;}
+
+	table.pricing tr td:last-child {text-align: right;}
+
+	table.border {
+		border-spacing: 0;
+		border-collapse: collapse; 
+	}
+	
+	table.border th,
+	table.border td {
+		border: 1px solid #131313 !important;
+		padding: 0.1rem;
+	}
+
+	table.tb-member td {vertical-align: top;}
+
+	table.tb-foot td {
+		width: 30%;
+		text-align: center;
+		vertical-align: top;
+		height:40pt;
+	}
+
+	.content-left {
+		float: left;
+		width: 50%;
+		border-right: 1.4pt solid #5A5A5A;
+	}
+	.content-right {
+		float: right;
+		width: 45%;
+	}
+
+	.footer {
+		margin-top: 0.2cm;
+	}
+		.footer .copyright {text-align: right; font-size: 6pt;letter-spacing:4pt;}
+	
+	@media print {
+		body {width: auto;margin:0;padding:0}
+		.print {display: none;}
+	}
