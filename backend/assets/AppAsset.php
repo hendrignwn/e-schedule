@@ -15,9 +15,9 @@ use yii\web\AssetBundle;
  */
 class AppAsset extends AssetBundle
 {
-    //public $basePath = '@webroot';
-    //public $baseUrl = '@web';
-	public $sourcePath = '@bower/theme-flat/';
+    //public $basePath = '@webroot/@backend/themes/flat';
+    //public $baseUrl = '@backend/themes/flat';
+	public $sourcePath = '@backend/themes/flat/';
     public $css = [
         'css/bootstrap.min.css',
 		'css/plugins/jquery-ui/smoothness/jquery-ui.css',
@@ -40,16 +40,16 @@ class AppAsset extends AssetBundle
 		'js/plugins/touch-punch/jquery.touch-punch.min.js',
 		'js/plugins/slimscroll/jquery.slimscroll.min.js',
 		'js/bootstrap.min.js',
-		'js/plugins/vmap/jquery.vmap.min.js',
-		'js/plugins/vmap/jquery.vmap.world.js',
-		'js/plugins/vmap/jquery.vmap.sampledata.js',
-		'js/plugins/bootbox/jquery.bootbox.js',
-		'js/plugins/flot/jquery.flot.min.js',
-		'js/plugins/flot/jquery.flot.bar.order.min.js',
-		'js/plugins/flot/jquery.flot.pie.min.js',
-		'js/plugins/flot/jquery.flot.resize.min.js',
-		'js/plugins/imagesLoaded/jquery.imagesloaded.min.js',
-		'js/plugins/pageguide/jquery.pageguide.js',
+//		'js/plugins/vmap/jquery.vmap.min.js',
+//		'js/plugins/vmap/jquery.vmap.world.js',
+//		'js/plugins/vmap/jquery.vmap.sampledata.js',
+//		'js/plugins/bootbox/jquery.bootbox.js',
+//		'js/plugins/flot/jquery.flot.min.js',
+//		'js/plugins/flot/jquery.flot.bar.order.min.js',
+//		'js/plugins/flot/jquery.flot.pie.min.js',
+//		'js/plugins/flot/jquery.flot.resize.min.js',
+//		'js/plugins/imagesLoaded/jquery.imagesloaded.min.js',
+//		'js/plugins/pageguide/jquery.pageguide.js',
 		'js/plugins/icheck/jquery.icheck.min.js',
 		'js/eakroko.min.js',
 		'js/application.min.js',
@@ -60,3 +60,26 @@ class AppAsset extends AssetBundle
         'yii\bootstrap\BootstrapAsset',
     ];
 }
+
+//namespace backend\assets;
+//
+//use yii\web\AssetBundle;
+//
+///**
+// * @author Qiang Xue <qiang.xue@gmail.com>
+// * @since 2.0
+// */
+//class AppAsset extends AssetBundle
+//{
+//    public $basePath = '@webroot';
+//    public $baseUrl = '@web';
+//    public $css = [
+//        'css/site.css',
+//    ];
+//    public $js = [
+//    ];
+//    public $depends = [
+//        'yii\web\YiiAsset',
+//        'yii\bootstrap\BootstrapAsset',
+//    ];
+//}

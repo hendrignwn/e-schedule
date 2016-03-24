@@ -13,7 +13,14 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+		'view' => [
+			'theme' => [
+				'pathMap' => ['@backend/views' => '@backend/themes/flat/views'],
+				'baseUrl' => '@backend/themes/flat',
+			],
+		],
         'user' => [
+			'class'=>'common\components\MyUser',
             'identityClass' => 'common\models\User',
             'enableAutoLogin' => true,
         ],

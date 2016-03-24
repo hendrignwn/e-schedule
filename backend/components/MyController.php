@@ -3,6 +3,7 @@ namespace backend\components;
 
 use yii\web\Controller;
 use yii\widgets\Menu;
+use yii\helpers\Url;
 
 class MyController extends Controller {
 	
@@ -15,16 +16,19 @@ class MyController extends Controller {
 		$mainMenu = Menu::widget([
 			'options' => ['class' => 'main-nav'],
 			'items' => [
-				['label' => 'Dashboard', 'url' => ['/dashboard/index']],
-				['label' => 'Menu 2', 'url' => ['/link2/index']],
-				['label' => 'Submenu',  
+				['label' => 'Dashboard', 'url' => ['/site/index']],
+				['label' => 'Courses', 'url' => ['/course/index']],
+				['label' => 'Schedule', 'url' => ['/schedule/index']],
+				['label' => 'Tasks', 'url' => ['/task/index']],
+				['label' => 'Master',  
 					'url' => ['#'],
-					'template' => '<a href="{url}" data-toggle="dropdown">{label}&nbsp;&nbsp;<span class="caret"></></a>',
+					'template' => '<a href="{url}" data-toggle="dropdown" class="dropdown-toggle">{label}&nbsp;&nbsp;<span class="caret"></></a>',
 					'options' => ['class' => 'dropdown'],
 					'items' => [
-						['label' => 'Action', 'url' => '#'],
-						['label' => 'Another action', 'url' => '#'],
-						['label' => 'Something else here', 'url' => '#'],
+						['label' => 'Category', 'url' => Url::toRoute('category/index')],
+						['label' => 'Faculty', 'url' => Url::toRoute('faculty/index')],
+						['label' => 'Departement', 'url' => Url::toRoute('departement/index')],
+						['label' => 'Semester', 'url' => '#'],
 					],
 				],
 			],
@@ -33,5 +37,9 @@ class MyController extends Controller {
 			'activateParents' => true]
 		);
 		return $mainMenu;
+	}
+	
+	public function leftMenu() {
+		
 	}
 }

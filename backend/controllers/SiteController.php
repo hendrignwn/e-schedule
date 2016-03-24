@@ -22,7 +22,7 @@ class SiteController extends MyController
                 'class' => AccessControl::className(),
                 'rules' => [
                     [
-                        'actions' => ['login', 'error'],
+                        'actions' => ['login', 'error', 'forgot-password'],
                         'allow' => true,
                     ],
                     [
@@ -57,10 +57,16 @@ class SiteController extends MyController
     {
         return $this->render('index');
     }
+	
+	public function actionForgotPassword()
+	{
+		$this->layout = 'login';
+		return $this->render('forgot-password');
+	}
 
     public function actionLogin()
     {
-		//$this->layout = 'login';
+		$this->layout = 'login';
 		
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();

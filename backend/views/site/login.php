@@ -8,27 +8,32 @@ use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
 
 $this->title = 'Login';
-$this->params['breadcrumbs'][]=[
-            'label' => 'Post Category',
-        ];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<?php $form = ActiveForm::begin(['id' => 'login-form', 'class'=>'form-validate']); ?>
+<div class="site-login">
+    <h1><?= Html::encode($this->title) ?></h1>
 
-<?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
+    <p>Please fill out the following fields to login:</p>
 
-<?= $form->field($model, 'password')->passwordInput() ?>
+    <div class="row">
+        <div class="col-lg-5">
+            <?php $form = ActiveForm::begin(['id' => 'login-form']); ?>
 
-<div class="submit">
-	<div class="remember">
-		<input type="checkbox" name="LoginForm[rememberMe]" class='icheck-me' data-skin="square" data-color="blue" id="loginform-rememberme">
-		<label for="loginform-rememberme">Remember Me</label>
-	</div>
-	<?= Html::submitButton('Sign me in', ['class' => 'btn btn-primary', 'name' => 'login-button', 'style'=>'float:right;']) ?>
-</div>
+                <?= $form->field($model, 'username')->textInput(['autofocus' => true]) ?>
 
-<?php ActiveForm::end(); ?>
-<div class="forget">
-	<a href="#">
-		<span>Forgot password?</span>
-	</a>
+                <?= $form->field($model, 'password')->passwordInput() ?>
+
+                <?= $form->field($model, 'rememberMe')->checkbox() ?>
+
+                <div style="color:#999;margin:1em 0">
+                    If you forgot your password you can <?= Html::a('reset it', ['site/request-password-reset']) ?>.
+                </div>
+
+                <div class="form-group">
+                    <?= Html::submitButton('Login', ['class' => 'btn btn-primary', 'name' => 'login-button']) ?>
+                </div>
+
+            <?php ActiveForm::end(); ?>
+        </div>
+    </div>
 </div>
