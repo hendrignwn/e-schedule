@@ -22,7 +22,9 @@
         "kartik-v/yii2-widget-datepicker": "@dev",
         "kartik-v/yii2-widget-datetimepicker": "@dev",
 		"kartik-v/yii2-widget-select2": "@dev",
-		"johnitvn/yii2-rbac-plus": "*"
+		"johnitvn/yii2-rbac-plus": "*",
+		"kartik-v/yii2-widget-colorinput": "*",
+		"deesoft/yii2-gii": "~1.0"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
