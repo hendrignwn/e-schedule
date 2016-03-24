@@ -6,6 +6,7 @@ use yii\base\NotSupportedException;
 use yii\behaviors\TimestampBehavior;
 use \common\components\MyActiveRecord;
 use yii\web\IdentityInterface;
+use common\models\UserDetail;
 
 /**
  * User model
@@ -48,6 +49,11 @@ class User extends MyActiveRecord implements IdentityInterface
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_ACTIVATION, self::STATUS_DELETED]],
         ];
     }
+	
+	public function getUserDetail()
+	{
+		return $this->hasOne(UserDetail::className(), ['user_id'=>'id']);
+	}
 
     /**
      * @inheritdoc
@@ -110,7 +116,7 @@ class User extends MyActiveRecord implements IdentityInterface
         $expire = Yii::$app->params['user.passwordResetTokenExpire'];
         return $timestamp + $expire >= time();
     }
-
+	
     /**
      * @inheritdoc
      */
